@@ -37,7 +37,8 @@ module "eks" {
       resolve_conflicts = "OVERWRITE"
     }
     aws-ebs-csi-driver = {
-      resolve_conflicts = "OVERWRITE"
+      service_account_role_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${aws_iam_role.ebs-csi-driver.name}"
+      resolve_conflicts        = "OVERWRITE"
     }
   }
 
