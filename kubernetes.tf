@@ -61,7 +61,7 @@ resource "kubernetes_secret" "iom-manage-secrets" {
       },
       loki = {
         bucket = aws_s3_bucket.assets.bucket
-        clusterRoleArn = aws_iam_role.cluster_lakehouse.arn
+        cluster_role_arn = aws_iam_role.cluster_lakehouse.arn
         region = var.region
  
       },

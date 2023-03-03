@@ -7,12 +7,6 @@ variable "cluster_id" {
   description = "Cluster id from IOMETE. This should match the cluster id in IOMETE"
   type        = string
 }
-
-variable "node_group_name" {
-  description = "Node group name of EKS cluster"
-  type        = string
-  default     = "default-ng"
-}
 variable "eks_ng_instance_type" {
   description = "EKS main node group instance type"
   type        = string

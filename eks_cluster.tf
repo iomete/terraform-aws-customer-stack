@@ -53,7 +53,8 @@ module "eks" {
   # This ensures core services such as VPC CNI, CoreDNS, etc. are up and running
   # so that Karpenter can be deployed and start managing compute capacity as required
   eks_managed_node_groups = {
-    "${var.node_group_name}" = {
+    "${local.cluster_name}-ng" = {
+      enable_monitoring = false
       instance_types = ["r5a.large"]
       # Ensure enough capacity to run 2 Karpenter pods
       min_size     = 1
@@ -126,7 +127,7 @@ module "karpenter" {
   # Since Karpenter is running on an EKS Managed Node group,
   # we can re-use the role that was created for the node group
   create_iam_role = false
-  iam_role_arn    = module.eks.eks_managed_node_groups["${var.node_group_name}"].iam_role_arn
+  iam_role_arn    = module.eks.eks_managed_node_groups["${local.cluster_name}-ng"].iam_role_arn
   tags            = local.tags
 }
 
