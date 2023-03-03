@@ -1,0 +1,8 @@
+## eks_cluster.tf
+      + enable_monitoring = false (by default it is true. It for ec2 detailed monitoring)
+
+## kubernetes.tf
+      + ClusterRoleArn changed to cluster_role_arn
+
+## eks_cluster.tf
+      + node_group_name "default-ng" changed to "${cluster_id}-ng"
