@@ -55,11 +55,23 @@ module "eks" {
   eks_managed_node_groups = {
     "${local.cluster_name}-ng" = {
       enable_monitoring = false
-      instance_types = ["r5a.large"]
+      instance_types    = ["r5a.large"]
+      #keep nodes in same AZ
+      subnet_ids = [module.vpc.private_subnets[0]]
       # Ensure enough capacity to run 2 Karpenter pods
       min_size     = 1
       max_size     = 2
       desired_size = 2
+      block_device_mappings = {
+        xvda = {
+          device_name = "/dev/xvda"
+          ebs = {
+            volume_size           = var.volume_size
+            volume_type           = var.volume_type
+            delete_on_termination = true
+          }
+        }
+      }
     }
   }
   node_security_group_additional_rules = {

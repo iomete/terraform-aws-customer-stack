@@ -16,7 +16,7 @@ variable "eks_ng_instance_type" {
 variable "volume_size" {
   description = "Cluster node volume size"
   type        = string
-  default     = "80"
+  default     = "100"
 }
 
 variable "volume_type" {

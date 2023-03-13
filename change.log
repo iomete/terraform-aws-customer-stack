@@ -6,3 +6,10 @@
 
 ## eks_cluster.tf
       + node_group_name "default-ng" changed to "${cluster_id}-ng"
+
+## eks_cluster.tf
+      + Increase node_group_disk_size to 100gb
+
+## kubernetes.tf
+      + Added NAT Public IP to the secret 
+
