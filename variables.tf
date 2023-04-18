@@ -7,12 +7,6 @@ variable "cluster_id" {
   description = "Cluster id from IOMETE. This should match the cluster id in IOMETE"
   type        = string
 }
-
-variable "node_group_name" {
-  description = "Node group name of EKS cluster"
-  type        = string
-  default     = "default-ng"
-}
 variable "eks_ng_instance_type" {
   description = "EKS main node group instance type"
   type        = string
@@ -22,7 +16,7 @@ variable "eks_ng_instance_type" {
 variable "volume_size" {
   description = "Cluster node volume size"
   type        = string
-  default     = "80"
+  default     = "100"
 }
 
 variable "volume_type" {
@@ -42,6 +36,13 @@ variable "kubernetes_public_access_cidrs" {
   type        = list(string)
   default     = ["0.0.0.0/0"]
 }
+
+variable "detailed_monitoring" {
+  description = "Enable or disable detailed monitoring."
+  type        = bool
+  default     = false
+}
+
 
 # the followings are your lakehouse bucket name and role name to access it
 variable "lakehouse_role_name" {

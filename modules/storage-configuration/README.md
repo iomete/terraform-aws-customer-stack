@@ -8,7 +8,7 @@
 
 module "storage-configuration-[workspace-name]" {
   source                     = "iomete/customer-stack/aws//modules/storage-configuration"
-  version                    = "1.0.0"
+  version                    = "1.3.0"
   aws_region                 = "us-east-1" # Cluster installed region 
   lakehouse_role_name 	     = "iomete-lakehouse-role-kgnwqy" 
   lakehouse_bucket_name      = "iomete-lakehouse-bucket-kgnwqy"

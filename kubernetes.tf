@@ -49,15 +49,22 @@ resource "kubernetes_secret" "iom-manage-secrets" {
         name                      = module.eks.cluster_name,
         endpoint                  = module.eks.cluster_endpoint,
         admin_arn                 = data.aws_caller_identity.current.arn,
-        additional_administrators = var.additional_administrators
+        additional_administrators = var.additional_administrators,
+        nat_public_ips            = module.vpc.nat_public_ips
+
       },
       default_storage_configuration = {
-        cluster_lakehouse_role_arn = aws_iam_role.cluster_lakehouse.arn
-        bucket_arn                 = module.storage-configuration.bucket_arn
+        cluster_lakehouse_role_arn = aws_iam_role.cluster_lakehouse.arn,
+        bucket_arn                 = module.storage-configuration.bucket_arn,
         bucket_access_role_arn     = module.storage-configuration.bucket_access_role_arn
       },
       terraform = {
-        module_version = local.module_version,
+        module_version = local.module_version
+      },
+      loki = {
+        bucket           = aws_s3_bucket.assets.bucket
+        cluster_role_arn = aws_iam_role.cluster_lakehouse.arn
+        region           = var.region
       },
     })
   }

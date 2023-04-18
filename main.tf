@@ -4,7 +4,7 @@ provider "aws" {
 
 locals {
   cluster_name   = "iomete-${var.cluster_id}"
-  module_version = "1.0.0"
+  module_version = "1.3.0"
 
   tags = {
     "iomete.com/cluster_id" : var.cluster_id

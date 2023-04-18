@@ -73,7 +73,8 @@ resource "aws_iam_role" "cluster_lakehouse" {
           StringLike = {
             "${module.eks.oidc_provider}:sub" : [
               "system:serviceaccount:workspace-*:spark-service-account",
-              "system:serviceaccount:iomete-system:*"
+              "system:serviceaccount:iomete-system:*",
+              "system:serviceaccount:monitoring:loki-s3access-sa"
             ]
           },
           StringEquals = {
