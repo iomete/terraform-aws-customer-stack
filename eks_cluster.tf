@@ -56,7 +56,6 @@ module "eks" {
     "${local.cluster_name}-ng" = {
       enable_monitoring = var.detailed_monitoring
       instance_types    = ["t3a.xlarge"]
-      capacity_type     = "SPOT"
       #keep nodes in same AZ
       subnet_ids = [module.vpc.private_subnets[0]]
       # Ensure enough capacity to run 2 Karpenter pods
