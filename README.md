@@ -1,5 +1,9 @@
-# IOMETE Customer-Stack module
+# ⛔ DEPRECATED
+## Deprecated Notice
 
+:warning: **Deprecated**: The repository URL has been changed. Please use the following link instead: [https://registry.terraform.io/modules/iomete/data-plane-aws/aws/latest].
+
+## IOMETE Customer-Stack module
 ## Terraform module which creates resources on AWS.
 
 
